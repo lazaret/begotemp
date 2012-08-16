@@ -1,2 +1,9 @@
 Install
 *******
+
+prerequistes:
+-------------
+Anuket >= 0.5.2
+PostgreSQL (tested with 9.1.3)
+PostGIS (tested with 1.5.4)
+Geoalchemy (tested with 0.7.1)
