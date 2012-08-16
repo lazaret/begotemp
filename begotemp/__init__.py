@@ -9,6 +9,12 @@ from anuket.models.rootfactory import RootFactory
 from anuket.security import get_auth_user
 
 
+from begotemp.models.zone import Zone
+from begotemp.models.group import Group
+from begotemp.models.rock import Rock
+from begotemp.models.figure import Figure
+
+
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
