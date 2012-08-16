@@ -1,6 +1,6 @@
 Begotemp
 ========
-Testing project witch will serve as a base to rewrite the `Vallée des Merveilles` database.
+Testing project witch will serve as a base to rewrite the `Vallée des Merveilles` database usin Anuket_.
 
 See:
 * https://github.com/lazaret/PetroglyphsMap
