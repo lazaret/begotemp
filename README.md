@@ -6,8 +6,8 @@ See:
 * https://github.com/lazaret/PetroglyphsMap
 * http://lazaret.unice.fr/opensource/browser/archeobases/trunk/bego
 
-Objective
-=========
+Objectives
+==========
 * Rewrite the admin forms of PetroglyphsMap (actualy in PHP)
 * Completly rewrites the forms of archeobases/bego
 * Merge both projects
