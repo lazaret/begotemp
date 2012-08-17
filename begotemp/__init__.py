@@ -41,11 +41,15 @@ def main(global_config, **settings):
     config.include(anuket.views.root)
     config.include(anuket.views.tools)
     config.include(anuket.views.user)
-    #from begotemp import views
-    #config.include(views)
+
+#TODO improve this
+    from begotemp.views import geo_zone
+    config.include(geo_zone)
     ## configure views
     config.scan('anuket')
-    #config.scan()
+    config.scan()
+
+
 
     config.add_translation_dirs('anuket:locale')
     config.set_locale_negotiator('anuket.lib.i18n.locale_negotiator')
