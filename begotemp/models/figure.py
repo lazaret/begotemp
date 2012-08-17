@@ -32,3 +32,4 @@ class Figure(Base):
 # add index to figure_number ?
 # review __init__
 # add __repr__
+# rename figure to 'drawing' ?

@@ -31,6 +31,10 @@ class Zone(Base):
 
 #TODOs
 # review set_centroid/geo_centroid: in classmethod ? in field ?
+# avaivalble directly from geoalchemy.functions ?
 # add index to zone_number ?
 # review __init__
 # add __repr__
+# Add a Secteurs model ?
+# rename Zone and Group to GeoZone and GeoGroups (class and table) ?
+# or something like PolygonZone PolygonGroup ?

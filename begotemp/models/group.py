@@ -28,3 +28,6 @@ class Group(Base):
 # add index to group_number ?
 # review __init__
 # add __repr__
+# find another name for group_id to avoi confusion with AuthGroup.group_id ?
+# rename Zone and groups to GeoZone and GeoGroup (class and table) ?
+# or something like PolygonZone PolygonGroup ?
