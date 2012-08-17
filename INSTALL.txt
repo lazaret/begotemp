@@ -4,6 +4,12 @@ Install
 prerequistes:
 -------------
 Anuket >= 0.5.2
+Psycopg2
+Geoalchemy (tested with 0.7.1)
+
 PostgreSQL (tested with 9.1.3)
 PostGIS (tested with 1.5.4)
-Geoalchemy (tested with 0.7.1)
+
+
+Eventualy if psycopg2 is installed with Pip our setuptools:
+postgresql-devel (rpm) / libpq-dev (deb)
