@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """ ``SQLAlchemy`` model definition for geographical zones."""
-from geoalchemy import GeometryColumn, Polygon, Point
+from geoalchemy import GeometryColumn, GeometryDDL, Polygon, Point
 from sqlalchemy import Column, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 
@@ -27,7 +27,7 @@ class Zone(Base):
 #        """Define the centroid geometry from the polygon geometry"""
 #        self.geo_centroid = Centroid(poly)
 
-
+GeometryDDL(Zone.__table__)
 
 #TODOs
 # review set_centroid/geo_centroid: in classmethod ? in field ?

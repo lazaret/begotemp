@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """ ``SQLAlchemy`` model definition for the rocks."""
-from geoalchemy import GeometryColumn, Point
+from geoalchemy import GeometryColumn, GeometryDDL, Point
 from sqlalchemy import Column, ForeignKey, Float, Integer, Unicode
 from sqlalchemy.orm import relationship
 
@@ -33,6 +33,7 @@ class Rock(Base):
 #        wkt = "POINT(" + x + " " + y + ")"
 #        self.geo_point = WKTSpatialElement(wkt)  # Geometric object (2D)
 
+GeometryDDL(Rock.__table__)
 
 
 #TODOs
