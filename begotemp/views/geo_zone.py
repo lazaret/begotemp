@@ -21,11 +21,15 @@ def includeme(config):
              renderer='/geo/zone/zone_list.mako')
 def zone_list_view(request):
 
+    _ = request.translate
     stats=None
 
     # construct the query
     zones = DBSession.query(Zone)
     zones = zones.order_by(Zone.zone_number)
+    # add a flash message for empty results
+    if zones.count() == 0:
+        request.session.flash(_(u"There is no results!"), 'error')
 
     # paginate results
     page_url = paginate.PageURL_WebOb(request)
@@ -33,6 +37,5 @@ def zone_list_view(request):
                           page=int(request.params.get("page", 1)),
                           items_per_page=20,
                           url=page_url)
-
 
     return dict(zones=zones, stats=stats)
