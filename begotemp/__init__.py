@@ -33,8 +33,16 @@ def main(global_config, **settings):
     config.include(anuket.add_authorization)
     # set an auth_user object
     config.set_request_property(get_auth_user, 'auth_user', reify=True)
+
     # configure subscribers
-    config.include(anuket.subscribers)
+##    config.include(anuket.subscribers)
+##Comented to avoid crsf check
+##TODO bring back CSRF
+    from pyramid.events import BeforeRender, NewRequest
+    config.add_subscriber(anuket.subscribers.add_renderer_globals, BeforeRender)
+    config.add_subscriber(anuket.subscribers.add_localizer, NewRequest)
+
+
     # configure static views
     config.include(anuket.add_static_views)
     # configure routes

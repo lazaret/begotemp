@@ -50,8 +50,12 @@ def rock_add_view(request):
 
     _ = request.translate
     form = RockForm(request.POST)
-    if request.method == 'POST' and form.validate():
-        pass
+    if 'form_submitted' in request.params and form.validate():
+        rock = Rock()
+        form.populate_obj(rock)
+        DBSession.add(rock)
+        request.session.flash(_(u"Rock added."), 'success')
+        return HTTPFound(location=request.route_path('rock_list'))
 
     return dict(form=form)
 
