@@ -41,3 +41,6 @@ GeometryDDL(Rock.__table__)
 # add index to rock_number ?
 # review __init__
 # add __repr__
+
+# there is a field repetition beween x+y+z and the geo_point. We probably need
+#to remove x+y+z and keep only the point

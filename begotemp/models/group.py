@@ -31,3 +31,4 @@ class Group(Base):
 # find another name for group_id to avoi confusion with AuthGroup.group_id ?
 # rename Zone and groups to GeoZone and GeoGroup (class and table) ?
 # or something like PolygonZone PolygonGroup ?
+# the geographical polygon seems to not be defined
