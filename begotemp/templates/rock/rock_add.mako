@@ -28,7 +28,6 @@
 
       <div class="control-group">
         <label for="group" class="control-label">
-          group
           ${form.group.label}
         </label>
         <div class="controls">
@@ -82,8 +81,6 @@
             %for error in form.point_y.errors:
               <span class="help-inline"><span class="icon">8</span>${error}</span>
             %endfor
-          %else:
-            ✩
           %endif
         </div>
       </div>

@@ -38,7 +38,8 @@ class RockForm(Form):
         validators.required()])
 
     #TODO change 'group' to 'groups'
-    group = QuerySelectField(query_factory=get_groups)
+    group = QuerySelectField(u'Group', get_label='group_number',
+        query_factory=get_groups)
 
     point_x = FloatField(u'X', validators=[
         validators.required()])

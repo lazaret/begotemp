@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import logging
+from pyramid.httpexceptions import HTTPFound
 from pyramid.view import view_config
 from webhelpers import paginate
-
 
 from anuket.models import DBSession
 from begotemp.models.rock import Rock
@@ -25,10 +25,14 @@ def rock_list_view(request):
 
     _ = request.translate
     stats=None
-
+    sortable_columns = ['rock_number']
+    column = request.params.get('sort')
     # construct the query
     rocks = DBSession.query(Rock)
-    rocks = rocks.order_by(Rock.rock_number)
+    if column and column in sortable_columns:
+        rocks = rocks.order_by(column)
+    else:
+        rocks = rocks.order_by(Rock.rock_number)
     # add a flash message for empty results
     if rocks.count() == 0:
         request.session.flash(_(u"There is no results!"), 'error')
@@ -39,7 +43,6 @@ def rock_list_view(request):
                           page=int(request.params.get("page", 1)),
                           items_per_page=20,
                           url=page_url)
-
     return dict(rocks=rocks, stats=stats)
 
 
@@ -58,7 +61,7 @@ def rock_add_view(request):
 
     return dict(form=form)
 
-
+#TODO add two related dropdown, first zone and after group
 
 
 #TODO change 'rock' to 'geo_rock' 'geo/rock' ?
