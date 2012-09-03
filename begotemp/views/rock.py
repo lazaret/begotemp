@@ -7,6 +7,7 @@ from webhelpers import paginate
 
 from anuket.models import DBSession
 from begotemp.models.rock import Rock
+from begotemp.forms import RockForm
 
 
 log = logging.getLogger(__name__)
@@ -41,8 +42,6 @@ def rock_list_view(request):
 
     return dict(rocks=rocks, stats=stats)
 
-
-from begotemp.forms import RockForm
 
 @view_config(route_name='rock_add', permission='admin',
              renderer='/rock/rock_add.mako')

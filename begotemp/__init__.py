@@ -51,8 +51,9 @@ def main(global_config, **settings):
     config.include(anuket.views.user)
 
 #TODO improve this
-    from begotemp.views import geo_zone, rock
+    from begotemp.views import geo_zone, geo_group, rock
     config.include(geo_zone)
+    config.include(geo_group)
     config.include(rock)
     ## configure views
     config.scan('anuket')

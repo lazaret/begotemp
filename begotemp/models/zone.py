@@ -19,7 +19,7 @@ class Zone(Base):
     # One-to-many relationship between zones and groups
     zone_groups = relationship('Group', backref='zone')
 
-#
+
 #    def __init__(self, zone):
 #        self.zone_number = zone
 #
@@ -38,3 +38,6 @@ GeometryDDL(Zone.__table__)
 # Add a Secteurs model ?
 # rename Zone and Group to GeoZone and GeoGroups (class and table) ?
 # or something like PolygonZone PolygonGroup ?
+#TODO zone_number must be unique
+#TODO setup backref intependently to minimize database load see
+#http://pieces.openpolitics.com/2006/07/sqlalchemy-beware-of-backref/

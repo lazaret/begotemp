@@ -9,8 +9,8 @@
   <thead>
     <tr>
       <th style="width: 50px;"></th>
+      <th>${sortable_link('group_number', u"Group")}</th>
       <th>${sortable_link('zone_number', u"Zone")}</th>
-##      <th>${sortable_link('first_name', u"First name")}</th>
 ##      <th>${sortable_link('last_name', u"Last name")}</th>
 ##      <th>${_(u"Email")}</th>
 ##      <th>${_(u"Group")}</th>
@@ -19,20 +19,20 @@
 ##  <tfoot>
 ##  </tfoot>
   <tbody>
-    % for zone in zones:
+    % for group in groups:
     <tr>
       <td> <!-- tool button -->
         <div class="btn-group">
           <button data-toggle="dropdown" class="btn btn-mini dropdown-toggle"><span class="icon">`</span> <span class="caret"/></button>
           <ul class="dropdown-menu">
-##            <li><a href="${request.route_path("geo.zone_show", zone_id=zone.zone_id)}"><span class="icon">z</span>${_(u"Show")}</a></li>
-##            <li><a href="${request.route_path("geo.zone_edit", zone_id=zone.zone_id)}"><span class="icon">></span>${_(u"Edit")}</a></li>
-##            <li><a href="#confirm_delete" data-toggle="modal" onclick="$('#confirm_delete #delete_button').attr('href', '${request.route_path("geo.zone_delete", zone_id=zone.zone_id)}');"><span class="icon">Ë</span>${_(u"Delete")}</a></li>
+##            <li><a href="${request.route_path("geo.group_show", group_id=group.group_id)}"><span class="icon">z</span>${_(u"Show")}</a></li>
+##            <li><a href="${request.route_path("geo.group_edit", group_id=group.group_id)}"><span class="icon">></span>${_(u"Edit")}</a></li>
+##            <li><a href="#confirm_delete" data-toggle="modal" onclick="$('#confirm_delete #delete_button').attr('href', '${request.route_path("geo.group_delete", group_id=group.group_id)}');"><span class="icon">Ë</span>${_(u"Delete")}</a></li>
           </ul>
         </div>
       </td>
-      <td>${zone.zone_number}</td>
-##      <td>${user.first_name}</td>
+      <td>${group.group_number}</td>
+      <td></td>
 ##      <td>${user.last_name}</td>
 ##      <td>${user.email}</td>
 ##      <td>${user.group.groupname}</td>
@@ -43,7 +43,7 @@
 
 
 ## Pager
-${pager(zones)}
+${pager(groups)}
 
 #### Confirm delete modal
 ##${confirm_delete()}
@@ -51,12 +51,12 @@ ${pager(zones)}
 
 ## Page title
 <%def name="page_title()">
-${_(u"Zone list")}
+${_(u"Group list")}
 </%def>
 
 ## Add record button
 <%def name="add_button()">
-  <a href="${request.route_path("geo.zone_add")}" class="btn btn-primary pull-right"><span class="icon">@</span>${_(u"Add new zone")}</a>
+  <a href="${request.route_path("geo.group_add")}" class="btn btn-primary pull-right"><span class="icon">@</span>${_(u"Add new group")}</a>
 </%def>
 
 ## Sortable column link
@@ -72,7 +72,7 @@ ${_(u"Zone list")}
   %else:
     <% arrow = None %>
   %endif
-  <a href="${request.route_path('geo.zone_list')}${postlink}">${_(textlink)}${arrow}</a>
+  <a href="${request.route_path('geo.group_list')}${postlink}">${_(textlink)}${arrow}</a>
 </%def>
 
 #### Aside search box
