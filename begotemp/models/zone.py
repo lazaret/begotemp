@@ -32,7 +32,7 @@ GeometryDDL(Zone.__table__)
 #TODOs
 # review set_centroid/geo_centroid: in classmethod ? in field ?
 # avaivalble directly from geoalchemy.functions ?
-# add index to zone_number ?
+# add index to zone_number ? No need, too less records expected
 # review __init__
 # add __repr__
 # Add a Secteurs model ?

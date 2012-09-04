@@ -32,3 +32,5 @@ class Group(Base):
 # rename Zone and groups to GeoZone and GeoGroup (class and table) ?
 # or something like PolygonZone PolygonGroup ?
 # the geographical polygon seems to not be defined
+#
+# we must change the table name as 'group' is a SQL reserved word
