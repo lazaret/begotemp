@@ -1,6 +1,6 @@
 ## -*- coding:utf-8 -*-
 ##
-<%inherit file="begotemp:templates/rock/base.mako" />
+<%inherit file="begotemp:templates/geo/base.mako" />
 ##<%namespace file="anuket:templates/widgets/confirm_delete.mako" import="confirm_delete"/>
 <%namespace file="anuket:templates/widgets/pager.mako" import="pager"/>
 
@@ -10,7 +10,7 @@
     <tr>
       <th style="width: 50px;"></th>
       <th>${sortable_link('rock_number', u"Rock")}</th>
-##      <th>${sortable_link('first_name', u"First name")}</th>
+      <th>${sortable_link('group_number', u"Group")}</th>
 ##      <th>${sortable_link('last_name', u"Last name")}</th>
       <th>${_(u"X")}</th>
       <th>${_(u"Y")}</th>
@@ -27,18 +27,18 @@
         <div class="btn-group">
           <button data-toggle="dropdown" class="btn btn-mini dropdown-toggle"><span class="icon">`</span> <span class="caret"/></button>
           <ul class="dropdown-menu">
-##            <li><a href="${request.route_path("rock_show", rock_id=rock.rock_id)}"><span class="icon">z</span>${_(u"Show")}</a></li>
-##            <li><a href="${request.route_path("rock_edit", rock_id=rock.rock_id)}"><span class="icon">></span>${_(u"Edit")}</a></li>
-##            <li><a href="#confirm_delete" data-toggle="modal" onclick="$('#confirm_delete #delete_button').attr('href', '${request.route_path("rock_delete", rock_id=rock.rock_id)}');"><span class="icon">Ë</span>${_(u"Delete")}</a></li>
+##            <li><a href="${request.route_path("geo.rock_show", rock_id=rock.rock_id)}"><span class="icon">z</span>${_(u"Show")}</a></li>
+##            <li><a href="${request.route_path("geo.rock_edit", rock_id=rock.rock_id)}"><span class="icon">></span>${_(u"Edit")}</a></li>
+##            <li><a href="#confirm_delete" data-toggle="modal" onclick="$('#confirm_delete #delete_button').attr('href', '${request.route_path("geo.rock_delete", rock_id=rock.rock_id)}');"><span class="icon">Ë</span>${_(u"Delete")}</a></li>
           </ul>
         </div>
       </td>
       <td>${rock.rock_number}</td>
+      <td>${rock.group.group_number}</td>
       <td>${rock.point_x}</td>
       <td>${rock.point_y}</td>
       <td>${rock.point_z}</td>
       <td>${rock.year}</td>
-##      <td>${user.group.groupname}</td>
     </tr>
     % endfor
   </tbody>
@@ -59,7 +59,7 @@ ${_(u"Rock list")}
 
 ## Add record button
 <%def name="add_button()">
-  <a href="${request.route_path("rock_add")}" class="btn btn-primary pull-right"><span class="icon">@</span>${_(u"Add new rock")}</a>
+  <a href="${request.route_path("geo.rock_add")}" class="btn btn-primary pull-right"><span class="icon">@</span>${_(u"Add new rock")}</a>
 </%def>
 
 ## Sortable column link
@@ -75,7 +75,7 @@ ${_(u"Rock list")}
   %else:
     <% arrow = None %>
   %endif
-  <a href="${request.route_path('rock_list')}${postlink}">${_(textlink)}${arrow}</a>
+  <a href="${request.route_path('geo.rock_list')}${postlink}">${_(textlink)}${arrow}</a>
 </%def>
 
 #### Aside search box

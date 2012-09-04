@@ -9,11 +9,7 @@
   <thead>
     <tr>
       <th style="width: 50px;"></th>
-      <th>${sortable_link('zone_number', u"Zone")}</th>
-##      <th>${sortable_link('first_name', u"First name")}</th>
-##      <th>${sortable_link('last_name', u"Last name")}</th>
-##      <th>${_(u"Email")}</th>
-##      <th>${_(u"Group")}</th>
+      <th>${_(u"Zone")}</th>
     </tr>
   </thead>
 ##  <tfoot>
@@ -32,10 +28,6 @@
         </div>
       </td>
       <td>${zone.zone_number}</td>
-##      <td>${user.first_name}</td>
-##      <td>${user.last_name}</td>
-##      <td>${user.email}</td>
-##      <td>${user.group.groupname}</td>
     </tr>
     % endfor
   </tbody>
@@ -57,22 +49,6 @@ ${_(u"Zone list")}
 ## Add record button
 <%def name="add_button()">
   <a href="${request.route_path("geo.zone_add")}" class="btn btn-primary pull-right"><span class="icon">@</span>${_(u"Add new zone")}</a>
-</%def>
-
-## Sortable column link
-<%def name="sortable_link(column, textlink)">
-  <% search = request.params.get('search') %>
-  <% sort = request.params.get('sort') %>
-  <% postlink = "?sort="+column %>
-  %if search:
-    <% postlink = postlink+"&search="+search %>
-  %endif
-  %if sort==column:
-    <% arrow = u" ▾" %>
-  %else:
-    <% arrow = None %>
-  %endif
-  <a href="${request.route_path('geo.zone_list')}${postlink}">${_(textlink)}${arrow}</a>
 </%def>
 
 #### Aside search box

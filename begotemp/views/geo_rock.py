@@ -15,17 +15,18 @@ log = logging.getLogger(__name__)
 
 def includeme(config):
 
-    config.add_route('rock_list', '/rock')
-    config.add_route('rock_add', '/rock/add')
+    config.add_route('geo.rock_list', '/geo/rock')
+    config.add_route('geo.rock_add', '/geo/rock/add')
 
 
-@view_config(route_name='rock_list', permission='admin',
-             renderer='/rock/rock_list.mako')
+@view_config(route_name='geo.rock_list', permission='admin',
+             renderer='/geo/rock/rock_list.mako')
 def rock_list_view(request):
 
     _ = request.translate
     stats=None
-    sortable_columns = ['rock_number']
+    sortable_columns = ['rock_number', 'group_number']
+    #TODO correct group_number sorting and listing
     column = request.params.get('sort')
     # construct the query
     rocks = DBSession.query(Rock)
@@ -46,8 +47,8 @@ def rock_list_view(request):
     return dict(rocks=rocks, stats=stats)
 
 
-@view_config(route_name='rock_add', permission='admin',
-             renderer='/rock/rock_add.mako')
+@view_config(route_name='geo.rock_add', permission='admin',
+             renderer='/geo/rock/rock_add.mako')
 def rock_add_view(request):
 
     _ = request.translate
@@ -57,11 +58,8 @@ def rock_add_view(request):
         form.populate_obj(rock)
         DBSession.add(rock)
         request.session.flash(_(u"Rock added."), 'success')
-        return HTTPFound(location=request.route_path('rock_list'))
-
+        return HTTPFound(location=request.route_path('geo.rock_list'))
     return dict(form=form)
 
 #TODO add two related dropdown, first zone and after group
 
-
-#TODO change 'rock' to 'geo_rock' 'geo/rock' ?

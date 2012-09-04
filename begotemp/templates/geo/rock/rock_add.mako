@@ -1,6 +1,6 @@
 ## -*- coding:utf-8 -*-
 ##
-<%inherit file="begotemp:templates/rock/base.mako" />
+<%inherit file="begotemp:templates/geo/base.mako" />
 ###<%namespace file="user_form_fields.mako" import="user_form_fields"/>
 ###<%namespace file="password_form_fields.mako" import="password_form_fields"/>
 
@@ -104,7 +104,7 @@
             <button type="submit" name="form_submitted" class="btn btn-primary"><span class="icon">Ã</span>${_(u"Submit")}</button>
           </div>
           <div class="span2">
-            <button type="button" onclick="window.location='/rock'" class="btn"><span class="icon">Â</span>${_(u"Cancel")}</button>
+            <button type="button" onclick="window.location='/geo/rock'" class="btn"><span class="icon">Â</span>${_(u"Cancel")}</button>
           </div>
         </div>
       </div>
