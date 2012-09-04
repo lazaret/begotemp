@@ -25,14 +25,9 @@ def zone_list_view(request):
 
     _ = request.translate
     stats=None
-    sortable_columns = ['zone_number']
-    column = request.params.get('sort')
     # construct the query
     zones = DBSession.query(Zone)
-    if column and column in sortable_columns:
-        zones = zones.order_by(column)
-    else:
-        zones = zones.order_by(Zone.zone_number)
+    zones = zones.order_by(Zone.zone_number)
     # add a flash message for empty results
     if zones.count() == 0:
         request.session.flash(_(u"There is no results!"), 'error')
@@ -58,5 +53,4 @@ def zone_add_view(request):
         DBSession.add(zone)
         request.session.flash(_(u"Zone added."), 'success')
         return HTTPFound(location=request.route_path('geo.zone_list'))
-
     return dict(form=form)
