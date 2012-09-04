@@ -28,10 +28,10 @@
 
       <div class="control-group">
         <label for="zone" class="control-label">
-          ${form.zones.label}
+          ${form.zone.label}
         </label>
         <div class="controls">
-          ${form.zones()}
+          ${form.zone()}
         </div>
       </div>
 

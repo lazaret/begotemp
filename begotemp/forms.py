@@ -25,7 +25,7 @@ class GroupForm(Form):
     group_number = IntegerField(u'Group number', validators=[
         validators.required()])
 
-    zones = QuerySelectField(u'Zone', get_label='zone_number',
+    zone = QuerySelectField(u'Zone', get_label='zone_number',
         query_factory=get_zones)
 
 
@@ -37,7 +37,6 @@ class RockForm(Form):
         validators.Length(max=10),
         validators.required()])
 
-    #TODO change 'group' to 'groups'
     group = QuerySelectField(u'Group', get_label='group_number',
         query_factory=get_groups)
 

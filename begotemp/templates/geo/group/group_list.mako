@@ -32,7 +32,7 @@
         </div>
       </td>
       <td>${group.group_number}</td>
-      <td></td>
+      <td>${group.zone.zone_number}</td>
 ##      <td>${user.last_name}</td>
 ##      <td>${user.email}</td>
 ##      <td>${user.group.groupname}</td>
