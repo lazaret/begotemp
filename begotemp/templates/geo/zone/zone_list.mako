@@ -35,24 +35,24 @@
 
 
 ## Pager
-${pager(zones)}
+##${pager(zones)}
 
 #### Confirm delete modal
 ##${confirm_delete()}
 
 
 ## Page title
-<%def name="page_title()">
+<%block name="page_title">
 ${_(u"Zone list")}
-</%def>
+</%block>
 
 ## Add record button
-<%def name="add_button()">
-  <a href="${request.route_path("geo.zone_add")}" class="btn btn-primary pull-right"><span class="icon">@</span>${_(u"Add new zone")}</a>
-</%def>
+<%block name="add_button">
+<a href="${request.route_path("geo.zone_add")}" class="btn btn-primary pull-right"><span class="icon">@</span>${_(u"Add new zone")}</a>
+</%block>
 
 #### Aside search box
-##<%def name="aside_search()">
+##<%block name="aside_search">
 ##  <% search = request.params.get('search') %>
 ##  %if search:
 ##    <% placeholder = search %>
@@ -63,10 +63,10 @@ ${_(u"Zone list")}
 ##  <input type="search" name="search" placeholder="${placeholder}" class="input-small search-query">
 ##<button type="submit" class="btn btn-small pull-right"><span class="icon">z</span>${_(u"Search")}</button>
 ##</form>
-##</%def>
+##</%block>
 
-#### Aside stats box
-##<%def name="aside_stats()">
+#### Aside stats table
+##<%block name="aside_stats">
 ##<table class="table table-condensed table-bordered">
 ##  <thead>
 ##   <tr><th>${_(u"Statistics")}</th></tr>
@@ -82,4 +82,4 @@ ${_(u"Zone list")}
 ##    </tr>
 ##  </tbody>
 ##</table>
-##</%def>
+##</%block>

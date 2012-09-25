@@ -53,14 +53,14 @@ ${pager(rocks)}
 
 
 ## Page title
-<%def name="page_title()">
+<%block name="page_title">
 ${_(u"Rock list")}
-</%def>
+</%block>
 
 ## Add record button
-<%def name="add_button()">
-  <a href="${request.route_path("geo.rock_add")}" class="btn btn-primary pull-right"><span class="icon">@</span>${_(u"Add new rock")}</a>
-</%def>
+<%block name="add_button">
+<a href="${request.route_path("geo.rock_add")}" class="btn btn-primary pull-right"><span class="icon">@</span>${_(u"Add new rock")}</a>
+</%block>
 
 ## Sortable column link
 <%def name="sortable_link(column, textlink)">
@@ -79,7 +79,7 @@ ${_(u"Rock list")}
 </%def>
 
 #### Aside search box
-##<%def name="aside_search()">
+##<%block name="aside_search">
 ##  <% search = request.params.get('search') %>
 ##  %if search:
 ##    <% placeholder = search %>
@@ -90,10 +90,10 @@ ${_(u"Rock list")}
 ##  <input type="search" name="search" placeholder="${placeholder}" class="input-small search-query">
 ##<button type="submit" class="btn btn-small pull-right"><span class="icon">z</span>${_(u"Search")}</button>
 ##</form>
-##</%def>
+##</%block>
 
-#### Aside stats box
-##<%def name="aside_stats()">
+#### Aside stats table
+##<%block name="aside_stats">
 ##<table class="table table-condensed table-bordered">
 ##  <thead>
 ##   <tr><th>${_(u"Statistics")}</th></tr>
@@ -109,4 +109,4 @@ ${_(u"Rock list")}
 ##    </tr>
 ##  </tbody>
 ##</table>
-##</%def>
+##</%block>
