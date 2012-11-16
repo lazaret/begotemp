@@ -12,6 +12,7 @@ class Rock(Base):
     __tablename__ = 'rock'
 
     rock_id = Column(Integer, primary_key=True)
+    # TODO add unique constraint for rock_number
     rock_number = Column(Unicode(10), nullable=False)
     point_x = Column(Float, nullable=False)
     point_y = Column(Float, nullable=False)
