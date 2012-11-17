@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """ ``SQLAlchemy`` model definition for geographical groups."""
+from geoalchemy import GeometryColumn, GeometryDDL, Polygon, Point
 from sqlalchemy import Column, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 
@@ -12,6 +13,8 @@ class Group(Base):
 
     group_id = Column(Integer, primary_key=True)
     group_number = Column(Integer, nullable=False)
+    geo_polygon = GeometryColumn(Polygon(2, srid=2154, spatial_index=False))
+    geo_centroid = GeometryColumn(Point(2, srid=2154, spatial_index=False))
 
     # One-to-many relationship between zones and groups
     zone_id = Column(Integer, ForeignKey('zone.zone_id'))
