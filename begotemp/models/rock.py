@@ -20,6 +20,9 @@ class Rock(Base):
     geo_point = GeometryColumn(Point(2, srid=2154, spatial_index=True))
     year = Column(Integer)
 
+    #TODO adde uniqueness to points ?
+    #TODO make disapear point_x, point_y and point_z ?
+
     # One-to-many relationship between groups and rocks
     group_id = Column(Integer, ForeignKey('group.group_id'))
     # One-to-many relationship between rocks and figures
