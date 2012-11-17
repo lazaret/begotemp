@@ -12,7 +12,7 @@ class Zone(Base):
     __tablename__ = 'zone'
 
     zone_id = Column(Integer, primary_key=True)
-    zone_number = Column(Integer, nullable=False)
+    zone_number = Column(Integer, nullable=False, unique=True)
     geo_polygon = GeometryColumn(Polygon(2, srid=2154, spatial_index=False))
     geo_centroid = GeometryColumn(Point(2, srid=2154, spatial_index=False))
 

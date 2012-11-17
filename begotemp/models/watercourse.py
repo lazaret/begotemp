@@ -11,7 +11,7 @@ class Watercourse(Base):
     __tablename__ = 'watercourse'
 
     watercourse_id = Column(Integer, primary_key=True)
-    watercourse_name = Column(Unicode)
+    watercourse_name = Column(Unicode, unique=True)
     geo_polygon = GeometryColumn(LineString(2, srid=2154, spatial_index=False))
 
 

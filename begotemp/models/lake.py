@@ -11,7 +11,7 @@ class Lake(Base):
     __tablename__ = 'lake'
 
     lake_id = Column(Integer, primary_key=True)
-    lake_name = Column(Unicode)
+    lake_name = Column(Unicode, unique=True)
     geo_polygon = GeometryColumn(Polygon(2, srid=2154, spatial_index=False))
     geo_centroid = GeometryColumn(Point(2, srid=2154, spatial_index=False))
 

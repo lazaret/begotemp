@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """ ``SQLAlchemy`` model definition for geographical groups."""
 from geoalchemy import GeometryColumn, GeometryDDL, Polygon, Point
-from sqlalchemy import Column, ForeignKey, Integer
+from sqlalchemy import Column, ForeignKey, Integer, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 from anuket.models import Base
@@ -10,6 +10,7 @@ from anuket.models import Base
 class Group(Base):
     """ Table for the geographical groups - POLYGONS - Lambert93."""
     __tablename__ = 'group'
+    __table_args__ = (UniqueConstraint('group_number', 'zone_id'),)
 
     group_id = Column(Integer, primary_key=True)
     group_number = Column(Integer, nullable=False)
@@ -25,6 +26,8 @@ class Group(Base):
 #        self.group_number = group
 #        self.zone_id = zone
 
+
+GeometryDDL(Group.__table__)
 
 
 #TODOs
