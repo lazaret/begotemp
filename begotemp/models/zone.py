@@ -19,6 +19,41 @@ class Zone(Base):
     # One-to-many relationship between zones and groups
     zone_groups = relationship('Group', backref='zone')
 
+#    # One-to-many relationship between zones and rocks
+#    zone_rocks = relationship(
+#        'Rock', primaryjoin=
+#        "and_(Zone.zone_id==Group.zone_id, Group.group_id==Rock.group_id)",
+#        foreign_keys="[Group.zone_id, Rock.group_id]",
+#        viewonly=True, remote_side="[Group.group_id]")
+#    #TODO test the above and evaluate if it's neccessary
+#    #TODO add backref in the rocks ?
+
+#    @classmethod
+#    def count_groups(zone_id=None):
+#        """ Count the children groups."""
+#        if zone_id:
+#            from anuket.models import DBSession
+#            from begotemp.models.group import Group
+#            query = DBSession.query(Group).filter(Group.zone_id==zone_id).count()
+#            #TODO tests if the above work
+#            #test = self.zone_rocks.count(zone_id)
+#            return query
+
+#    @classmethod
+#    def count_rocks(zone_id=None, ):
+#        """ Count the grand children rocks."""
+#        if zone_id:
+#            from anuket.models import DBSession
+#            from begotemp.models.rocks import Group, Rocks
+#            query = DBSession.query(Rocks).join(Group).filter(Rock.).count()
+#            #TODO tests if the above work
+#            #test = self.zone_rocks.count(zone_id)
+#            return query
+
+
+#TODO: decide if we use @classmethod or @hybrid_property
+
+
 
 #    def __init__(self, zone):
 #        self.zone_number = zone
