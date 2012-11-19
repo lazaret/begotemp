@@ -10,6 +10,10 @@
     <tr>
       <th style="width: 50px;"></th>
       <th>${_(u"Zone")}</th>
+      <th>${_(u"Groups")}</th>
+      <th>${_(u"Rocks")}</th>
+      <th>${_(u"Engravings")}</th>
+      <th>${_(u"Polygon")}</th>
     </tr>
   </thead>
 ##  <tfoot>
@@ -28,6 +32,14 @@
         </div>
       </td>
       <td>${zone.zone_number}</td>
+      <td>${zone.group_count}</td>
+      <td>${zone.rock_count}</td>
+      <td></td>
+      %if zone.geo_polygon:
+        <td><span class="icon">Ã</span></td>
+      %else:
+        <td><span class="icon">Â</span></td>
+      %endif
     </tr>
     % endfor
   </tbody>
@@ -65,21 +77,29 @@ ${_(u"Zone list")}
 ##</form>
 ##</%block>
 
-#### Aside stats table
-##<%block name="aside_stats">
-##<table class="table table-condensed table-bordered">
-##  <thead>
-##   <tr><th>${_(u"Statistics")}</th></tr>
-##  <thead>
-##  <tbody>
-##    <tr>
-##      <td>${_("Users")}</td>
-##      <td>${stats['usercount']}</td>
-##    </tr>
-##    <tr>
-##      <td>${_("Groups")}</td>
-##      <td>${stats['groupcount']}</td>
-##    </tr>
-##  </tbody>
-##</table>
-##</%block>
+## Aside stats table
+<%block name="aside_stats">
+<table class="table table-condensed table-bordered">
+  <thead>
+   <tr><th>${_(u"Statistics")}</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>${_("Zones")}</td>
+      <td>${stats['zonecount']}</td>
+    </tr>
+    <tr>
+      <td>${_("Groups")}</td>
+      <td>${stats['groupcount']}</td>
+    </tr>
+    <tr>
+      <td>${_("Rocks")}</td>
+      <td>${stats['rockcount']}</td>
+    </tr>
+    <tr>
+      <td>${_("Engravings")}</td>
+      <td>${stats['engravingcount']}</td>
+    </tr>
+  </tbody>
+</table>
+</%block>

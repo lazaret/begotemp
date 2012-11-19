@@ -7,6 +7,8 @@ from webhelpers import paginate
 
 from anuket.models import DBSession
 from begotemp.models.zone import Zone
+from begotemp.models.group import Group
+from begotemp.models.rock import Rock
 from begotemp.forms import ZoneForm
 
 
@@ -19,19 +21,32 @@ def includeme(config):
     config.add_route('geo.zone_add', '/geo/zone/add')
 
 
+def get_zone_stats():
+    """ Get basic database statistics.
+
+    :return: zones and groups counts from the database
+    :rtype: dictionary
+    """
+    zonecount = DBSession.query(Zone.zone_id).count()
+    groupcount = DBSession.query(Group.group_id).count()
+    rockcount = DBSession.query(Rock.rock_id).count()
+    engravingcount = None
+    return dict(zonecount=zonecount, groupcount=groupcount,
+                rockcount=rockcount, engravingcount=engravingcount)
+
+
 @view_config(route_name='geo.zone_list', permission='admin',
              renderer='/geo/zone/zone_list.mako')
 def zone_list_view(request):
 
     _ = request.translate
-    stats=None
+    stats = get_zone_stats()
     # construct the query
     zones = DBSession.query(Zone)
     zones = zones.order_by(Zone.zone_number)
     # add a flash message for empty results
     if zones.count() == 0:
         request.session.flash(_(u"There is no results!"), 'error')
-
     # paginate results
     page_url = paginate.PageURL_WebOb(request)
     zones = paginate.Page(zones,
