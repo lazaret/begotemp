@@ -11,11 +11,12 @@
       <th style="width: 50px;"></th>
       <th>${sortable_link('rock_number', u"Rock")}</th>
       <th>${sortable_link('group_number', u"Group")}</th>
-##      <th>${sortable_link('last_name', u"Last name")}</th>
+      <th>${_(u"Zone")}</th>
       <th>${_(u"X")}</th>
       <th>${_(u"Y")}</th>
       <th>${_(u"Z")}</th>
       <th>${_(u"Year")}</th>
+      <th>${_(u"Engravings")}</th>
     </tr>
   </thead>
 ##  <tfoot>
@@ -35,10 +36,12 @@
       </td>
       <td>${rock.rock_number}</td>
       <td>${rock.group.group_number}</td>
+      <td></td>
       <td>${rock.point_x}</td>
       <td>${rock.point_y}</td>
       <td>${rock.point_z}</td>
       <td>${rock.year}</td>
+      <td></td>
     </tr>
     % endfor
   </tbody>

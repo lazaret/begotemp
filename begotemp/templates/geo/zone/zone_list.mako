@@ -32,8 +32,10 @@
         </div>
       </td>
       <td>${zone.zone_number}</td>
-      <td>${zone.group_count}</td>
-      <td>${zone.rock_count}</td>
+##      <td></td>
+##      <td></td>
+     <td>${len(zone.zone_groups)}</td>
+##      <td>${len(zone.zone_rocks)}</td>
       <td></td>
       %if zone.geo_polygon:
         <td><span class="icon">Ã</span></td>
