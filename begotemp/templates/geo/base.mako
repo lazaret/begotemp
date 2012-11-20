@@ -16,17 +16,9 @@ ${next.body()}
 ##</%block>
 
 
-#### Top navbar links
-##<%def name="top_navbar_links()">
-##<ul class="nav">toto
-##  <li><a href="${request.route_path('home')}"><span class="icon">S</span><b>${_(u"Home")}</b></a></li>
-##</ul>
-##</%def>
-
-
+#### Left navbar links
 <%block name="left_navbar_links">
-<li><a href="${request.route_path('home')}"><span class="icon">S</span><b>${_(u"Home")}</b></a></li>
-<li class="active dropdown">
+<li class="dropdown">
   <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="icon">6</span><b>${_(u"Geography")}</b><b class="caret"/></b></a>
   <ul class="dropdown-menu">
     <li><a href="${request.route_path('geo.zone_list')}">${_("Zone")}</a></li>

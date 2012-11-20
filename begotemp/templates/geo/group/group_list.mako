@@ -9,11 +9,11 @@
   <thead>
     <tr>
       <th style="width: 50px;"></th>
-      <th>${sortable_link('group_number', u"Group")}</th>
-      <th>${sortable_link('zone_number', u"Zone")}</th>
-##      <th>${sortable_link('last_name', u"Last name")}</th>
-##      <th>${_(u"Email")}</th>
-##      <th>${_(u"Group")}</th>
+      <th>${_(u"Group")}</th>
+      <th>${_(u"Zone")}</th>
+      <th>${_(u"Rocks")}</th>
+      <th>${_(u"Engravings")}</th>
+      <th>${_(u"Polygon")}</th>
     </tr>
   </thead>
 ##  <tfoot>
@@ -33,9 +33,13 @@
       </td>
       <td>${group.group_number}</td>
       <td>${group.zone.zone_number}</td>
-##      <td>${user.last_name}</td>
-##      <td>${user.email}</td>
-##      <td>${user.group.groupname}</td>
+      <td>${len(group.group_rocks)}</td>
+      <td></td>
+      %if group.geo_polygon:
+        <td><span class="icon">Ã</span></td>
+      %else:
+        <td><span class="icon">Â</span></td>
+      %endif
     </tr>
     % endfor
   </tbody>

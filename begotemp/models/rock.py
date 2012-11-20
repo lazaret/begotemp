@@ -14,6 +14,7 @@ class Rock(Base):
     rock_id = Column(Integer, primary_key=True)
     # TODO add unique constraint for rock_number
     rock_number = Column(Unicode(10), nullable=False)
+    #rock_name = Column(Unicode(255))
     point_x = Column(Float, nullable=False)
     point_y = Column(Float, nullable=False)
     point_z = Column(Float)
