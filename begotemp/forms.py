@@ -13,7 +13,7 @@ from begotemp.models.zone import Zone
 
 
 class ZoneForm(Form):
-    zone_number = IntegerField(u'Zone number', validators=[
+    zone_number = TextField(u'Zone number', validators=[
         validators.required()])
 
 
@@ -22,7 +22,7 @@ def get_zones():
 #TODO move in models ?
 
 class GroupForm(Form):
-    group_number = IntegerField(u'Group number', validators=[
+    group_number = TextField(u'Group number', validators=[
         validators.required()])
 
     zone = QuerySelectField(u'Zone', get_label='zone_number',

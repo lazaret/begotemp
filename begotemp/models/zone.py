@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """ ``SQLAlchemy`` model definition for geographical zones."""
 from geoalchemy import GeometryColumn, GeometryDDL, Polygon, Point
-from sqlalchemy import Column, ForeignKey, Integer
+from sqlalchemy import Column, ForeignKey, Integer, Unicode
 from sqlalchemy.orm import relationship
 
 from anuket.models import Base
@@ -12,7 +12,7 @@ class Zone(Base):
     __tablename__ = 'zone'
 
     zone_id = Column(Integer, primary_key=True)
-    zone_number = Column(Integer, nullable=False)
+    zone_number = Column(Unicode, nullable=False)
     geo_polygon = GeometryColumn(Polygon(2, srid=2154, spatial_index=False))
     geo_centroid = GeometryColumn(Point(2, srid=2154, spatial_index=False))
 
@@ -28,16 +28,15 @@ class Zone(Base):
 #    #TODO test the above and evaluate if it's neccessary
 #    #TODO add backref in the rocks ?
 
-#    @classmethod
-#    def count_groups(zone_id=None):
-#        """ Count the children groups."""
-#        if zone_id:
-#            from anuket.models import DBSession
-#            from begotemp.models.group import Group
-#            query = DBSession.query(Group).filter(Group.zone_id==zone_id).count()
-#            #TODO tests if the above work
-#            #test = self.zone_rocks.count(zone_id)
-#            return query
+
+
+
+#    @hybrid_property
+#    def groups_count(self):
+#        return len(self.zone_groups)
+#TODO decide if we move groups ans rocks counts inside @hybrid_property
+
+
 
 #    @classmethod
 #    def count_rocks(zone_id=None, ):
@@ -49,9 +48,6 @@ class Zone(Base):
 #            #TODO tests if the above work
 #            #test = self.zone_rocks.count(zone_id)
 #            return query
-
-
-#TODO: decide if we use @classmethod or @hybrid_property
 
 
 
