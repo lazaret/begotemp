@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """ ``SQLAlchemy`` model definition for geographical groups."""
 from geoalchemy import GeometryColumn, GeometryDDL, Polygon, Point
-from sqlalchemy import Column, ForeignKey, Integer, UniqueConstraint
+from sqlalchemy import Column, ForeignKey, Integer, Unicode, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 from anuket.models import Base
@@ -13,7 +13,7 @@ class Group(Base):
     __table_args__ = (UniqueConstraint('group_number', 'zone_id'),)
 
     group_id = Column(Integer, primary_key=True)
-    group_number = Column(Integer, nullable=False)
+    group_number = Column(Unicode, nullable=False)
     geo_polygon = GeometryColumn(Polygon(2, srid=2154, spatial_index=False))
     geo_centroid = GeometryColumn(Point(2, srid=2154, spatial_index=False))
 
