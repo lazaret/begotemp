@@ -9,11 +9,11 @@
   <thead>
     <tr>
       <th style="width: 50px;"></th>
-      <th>${_(u"Group")}</th>
       <th>${_(u"Zone")}</th>
+      <th>${_(u"Group")}</th>
+      <th>${_(u"Polygon")}</th>
       <th>${_(u"Rocks")}</th>
       <th>${_(u"Engravings")}</th>
-      <th>${_(u"Polygon")}</th>
     </tr>
   </thead>
 ##  <tfoot>
@@ -31,15 +31,15 @@
           </ul>
         </div>
       </td>
-      <td>${group.group_number}</td>
       <td>${group.zone.zone_number}</td>
-      <td>${len(group.group_rocks)}</td>
-      <td></td>
+      <td><strong>${group.group_number}</strong></td>
       %if group.geo_polygon:
         <td><span class="icon">Ã</span></td>
       %else:
         <td><span class="icon">Â</span></td>
       %endif
+      <td>${group.rocks_count}</td>
+      <td></td>
     </tr>
     % endfor
   </tbody>

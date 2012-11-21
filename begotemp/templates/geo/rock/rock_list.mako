@@ -9,9 +9,9 @@
   <thead>
     <tr>
       <th style="width: 50px;"></th>
-      <th>${sortable_link('rock_number', u"Rock")}</th>
-      <th>${sortable_link('group_number', u"Group")}</th>
       <th>${_(u"Zone")}</th>
+      <th>${sortable_link('group_number', u"Group")}</th>
+      <th>${sortable_link('rock_number', u"Rock")}</th>
       <th>${_(u"X")}</th>
       <th>${_(u"Y")}</th>
       <th>${_(u"Z")}</th>
@@ -34,9 +34,9 @@
           </ul>
         </div>
       </td>
-      <td>${rock.rock_number}</td>
-      <td>${rock.group.group_number}</td>
       <td></td>
+      <td>${rock.group.group_number}</td>
+      <td><strong>${rock.rock_number}</strong></td>
       <td>${rock.point_x}</td>
       <td>${rock.point_y}</td>
       <td>${rock.point_z}</td>

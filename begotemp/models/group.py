@@ -2,6 +2,7 @@
 """ ``SQLAlchemy`` model definition for geographical groups."""
 from geoalchemy import GeometryColumn, GeometryDDL, Polygon, Point
 from sqlalchemy import Column, ForeignKey, Integer, Unicode, UniqueConstraint
+from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import relationship
 
 from anuket.models import Base
@@ -21,6 +22,12 @@ class Group(Base):
     zone_id = Column(Integer, ForeignKey('zone.zone_id'))
     # One-to-many relationship between groups and rocks
     group_rocks = relationship('Rock', backref='group')
+
+
+    @hybrid_property
+    def rocks_count(self):
+        """ Count the number of grand child rocks"""
+        return len(self.group_rocks)
 
 #    def __init__(self, zone, group):
 #        self.group_number = group

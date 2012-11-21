@@ -2,6 +2,7 @@
 """ ``SQLAlchemy`` model definition for geographical zones."""
 from geoalchemy import GeometryColumn, GeometryDDL, Polygon, Point
 from sqlalchemy import Column, ForeignKey, Integer, Unicode
+from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import relationship
 
 from anuket.models import Base
@@ -19,36 +20,23 @@ class Zone(Base):
     # One-to-many relationship between zones and groups
     zone_groups = relationship('Group', backref='zone')
 
-#    # One-to-many relationship between zones and rocks
-#    zone_rocks = relationship(
-#        'Rock', primaryjoin=
-#        "and_(Zone.zone_id==Group.zone_id, Group.group_id==Rock.group_id)",
-#        foreign_keys="[Group.zone_id, Rock.group_id]",
-#        viewonly=True, remote_side="[Group.group_id]")
-#    #TODO test the above and evaluate if it's neccessary
-#    #TODO add backref in the rocks ?
+    # One-to-many relationship between zones and rocks
+    # (parent= Zone grand childs = Rock)
+    zone_rocks = relationship('Rock', primaryjoin=
+        "and_(Rock.group_id==Group.group_id, Group.zone_id==Zone.zone_id)",
+        foreign_keys="[Rock.group_id, Group.zone_id]",
+        viewonly=True, remote_side="[Group.zone_id]")
 
 
+    @hybrid_property
+    def groups_count(self):
+        """ Count the number of child groups."""
+        return len(self.zone_groups)
 
-
-#    @hybrid_property
-#    def groups_count(self):
-#        return len(self.zone_groups)
-#TODO decide if we move groups ans rocks counts inside @hybrid_property
-
-
-
-#    @classmethod
-#    def count_rocks(zone_id=None, ):
-#        """ Count the grand children rocks."""
-#        if zone_id:
-#            from anuket.models import DBSession
-#            from begotemp.models.rocks import Group, Rocks
-#            query = DBSession.query(Rocks).join(Group).filter(Rock.).count()
-#            #TODO tests if the above work
-#            #test = self.zone_rocks.count(zone_id)
-#            return query
-
+    @hybrid_property
+    def rocks_count(self):
+        """ Count the number of grand child rocks"""
+        return len(self.zone_rocks)
 
 
 #    def __init__(self, zone):
